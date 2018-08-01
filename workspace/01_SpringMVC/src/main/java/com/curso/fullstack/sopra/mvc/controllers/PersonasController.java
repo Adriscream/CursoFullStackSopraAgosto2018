@@ -22,10 +22,10 @@ public class PersonasController {
 	//[GET] http://localhost:8080/persona/saludo/juan?prefix=Hola
 	
 	@GetMapping("/persona/saludo/{name}")
-	public String saludo(@PathVariable("name") String nombre, 
-			@RequestParam("prefix") String prefijo, Model model) {
+	public String saludo(@PathVariable(name="name", required=false) String nombre, 
+			@RequestParam(name="prefix", required=false) String prefijo, Model model) {
 		
-		model.addAttribute("dato", "Este es un mensaje para la vista");
+		model.addAttribute("dato", prefijo + " " + nombre + "!!!");
 		
 		return "exito";
 	}
@@ -35,7 +35,7 @@ public class PersonasController {
 		Map<String, Object> model = new HashMap<>();
 		
 		model.put("dato", "Este es un mensaje para la vista");
-		model.put("persona", new Persona());
+		model.put("persona", persona);
 		
 		return new ModelAndView("exito", model);
 	}

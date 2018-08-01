@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$("button").click(function() {
+			$.ajax(
+				{
+				  url: "/persona/saludo",
+				  type: "POST",
+				  data: JSON.stringify({
+					"id" : 1,
+					"nombre" : "Victor"
+				  }),
+				  contentType:"application/json; charset=utf-8",
+				  dataType:"html",
+				  success: function(data, status) {
+						//alert("Data: " + data + "\nStatus: " + status);
+						$("#resultado").append(data);
+				  }
+				}
+			);
+		});
+	});
+</script>
+</head>
+<body>
+	<p th:text="${dato}" />
+
+	<p th:if="${persona != null}" th:text="${persona.id}" />
+
+	<p th:if="${persona != null}" th:text="${persona.nombre}" />
+	
+	<button>enviar con Ajax</button>
+	
+	<div id="resultado"></div>
+</body>
+</html>
