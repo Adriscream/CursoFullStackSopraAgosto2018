@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.curso.fullstack.sopra.mvc.dto.Persona;
+import com.curso.fullstack.sopra.mvc.dto.QPersona;
 import com.curso.fullstack.sopra.mvc.persistence.PersonaRepository;
+import com.querydsl.core.types.Predicate;
 
 @Service
 public class PersonaServicioImpl implements PersonasServicio {
@@ -17,7 +19,11 @@ public class PersonaServicioImpl implements PersonasServicio {
 	
 	@Override
 	public Persona getPersonaById(long id) {
-		return personaRepository.findById(id).get();
+		
+		//select p from Persona p where p.id = :id
+		return personaRepository.findOne(QPersona.persona.id.eq(id)).get();
+		
+		//return personaRepository.findById(id).get();
 	}
 
 	@Override
