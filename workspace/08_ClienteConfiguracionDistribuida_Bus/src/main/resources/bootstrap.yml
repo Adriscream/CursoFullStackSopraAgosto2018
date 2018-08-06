@@ -1,5 +1,5 @@
 server:
-  port: 8680
+  port: 8880
 
 
 endpoints:
@@ -13,3 +13,6 @@ spring:
       uri: http://localhost:9080
   application:
     name: holamundo
+  rabbitmq:
+    host: localhost
+    port: 5672
