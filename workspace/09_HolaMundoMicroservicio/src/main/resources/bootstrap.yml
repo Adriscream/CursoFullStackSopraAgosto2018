@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: holamundo
+  cloud:
+    config:
+      enabled: true
+      uri: http://localhost:9080
+      failFast: true
+    
+server:
+  port: 8086
