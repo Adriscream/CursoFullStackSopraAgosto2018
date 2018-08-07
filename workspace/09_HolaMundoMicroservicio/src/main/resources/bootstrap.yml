@@ -8,4 +8,4 @@ spring:
       failFast: true
     
 server:
-  port: 8086
+  port: 9086
